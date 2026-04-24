@@ -1,10 +1,9 @@
-// 1. TIME GREETING (page load)
 let greeting = document.getElementById("greeting");
 
 let hour = new Date().getHours();
 
 if (hour < 12) {
-    greeting.textContent = "Good Morning 🌅";
+    greeting.textContent = "Good Morning 🌤️";
 } else if (hour < 18) {
     greeting.textContent = "Good Afternoon ☀️";
 } else {
@@ -12,13 +11,20 @@ if (hour < 12) {
 }
 
 
-// 2. CHANGE BACKGROUND COLOR
+
+
+let isGreen = false;
+
 document.getElementById("colorBtn").addEventListener("click", function() {
-    document.body.style.backgroundColor = "darkgreen";
+    if (isGreen === false) {
+        document.body.style.background = "darkgreen";
+        isGreen = true;
+    } else {
+        document.body.style.background = "linear-gradient(to bottom, #b2dcf9, #c9ffb8)";
+        isGreen = false;
+    }
 });
 
-
-// 3. TOGGLE MENU (show/hide)
 document.getElementById("menuBtn").addEventListener("click", function() {
     let menu = document.getElementById("menu");
 
@@ -30,18 +36,18 @@ document.getElementById("menuBtn").addEventListener("click", function() {
 });
 
 
-// 4. CLICK CARD → SHOW MESSAGE
+
 let cards = document.querySelectorAll(".card");
 
 cards.forEach(function(card) {
     card.addEventListener("click", function() {
         document.getElementById("message").textContent =
-            "You clicked " + card.textContent;
+            "You clicked the " + card.textContent;
     });
 });
 
 
-// 5. HOVER EVENT (extra JS hover, not just CSS)
+
 cards.forEach(function(card) {
     card.addEventListener("mouseover", function() {
         card.style.transform = "scale(1.1)";
